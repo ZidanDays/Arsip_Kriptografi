@@ -1,53 +1,45 @@
+<?php include "auth.php"; ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/mainn.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dashboard/css/login.css">
 </head>
 
 <body>
-    <img class="wave" src="assets/img/wave.png">
-    <div class="container">
-        <div class="img">
-            <img src="assets/img/bg.svg">
-        </div>
-        <div class="login-content">
-            <form class="login-form" action="auth.php" method="post">
-                <img src="assets/img/avatar.svg">
-                <h2 class="title">Welcome</h2>
-                <div class="input-div one">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div">
-                        <!-- <h5>Username</h5> -->
-                        <input class="form-control" type="text" name="username" placeholder="Username" autofocus
-                            autocomplete="off" required>
-                    </div>
-                </div>
-                <div class="input-div pass">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="div">
-                        <!-- <h5>Password</h5> -->
-                        <input class="form-control" type="password" name="password" placeholder="Password" required>
-                    </div>
-                </div>
-                <button class="btn btn-primary btn-block" name="login">Login <i
-                        class="fa fa-sign-in fa-lg"></i></button><br>
-                <!-- <input type="submit" class="btn" value="Login"> -->
-                <p>User: admin Pass: 1</p>
-            </form>
-        </div>
+    <div class="login-box">
+
+    <div>
+    <img src="dashboard/img/logo-minahasa.png" alt="">
     </div>
-    <script type="text/javascript" src="assets/js/main1.js"></script>
+    <br><br>
+
+        <!-- <h2>Login</h2> -->
+        <form action="auth.php" method="post">
+    <div class="user-box">
+        <input type="text" name="username" required>
+        <label>Username</label>
+    </div>
+    <div class="user-box">
+        <input type="password" name="password" required>
+        <label>Password</label>
+    </div>
+    <!-- Mengganti elemen <a> menjadi <button> -->
+    <button type="submit" name="login">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+    </button>
+</form>
+
+    </div>
 </body>
 
 </html>
