@@ -17,7 +17,8 @@ $query = mysqli_query($connect, "SELECT * FROM users WHERE username='admin'");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
 		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logologo1.png">
     <!-- Google Fonts
 		============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
@@ -117,36 +118,28 @@ $query = mysqli_query($connect, "SELECT * FROM users WHERE username='admin'");
                                 <span class="mini-click-non">Dashboard</span>
                             </a>
                         </li>
-                    <li class="active">
+                     <li class="active">
                             <a class="nav-link" href="arsip.php">
                                 <i class="fa-solid fa-file-zipper"></i>
                                 <span class="mini-click-non">Arsip</span>
                             </a>
-                        </li>
-                    <!-- <li class="active">
-                            <a class="nav-link" href="enkripsi.php">
-                                <i class="fa-solid fa-file-zipper"></i>
-                                <span class="mini-click-non">Upload & Enkripsi File</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="dekripsi.php" aria-expanded="false"><i
-                                    class="fa-solid fa-unlock-keyhole"></i> <span
-                                    class="mini-click-non">Dekripsi File</span></a>
-                        </li> -->
+                      </li>
                       <li>
                           <a class="nav-link" href="#" aria-expanded="false">
                               <i class="fa-solid fa-users" style="margin-right : 12px;"></i> <span class="mini-click-non">Manajemen User</span>
                           </a>
                           <ul class="submenu-angle" aria-expanded="false">
-                              <li><a title="Tambah User" href="tambah-user.php"><span class="mini-sub-pro">Tambah User</span></a></li>
+                              <li><a title="Tambah User" href="tambah-user.php"><i
+                              class="fa-sharp fa-solid fa-person-circle-plus"></i><span class="mini-click-non">Tambah User</a></li>
                               <!-- <li><a title="Log Activity" href="log_activity.php"><span class="mini-sub-pro">log_activity</span></a></li> -->
                               <!-- <li><a title="Pengguna Online" href="pengguna-online.php"><span class="mini-sub-pro">Pengguna Online</span></a></li> -->
                               <!-- Anda dapat menambahkan item dropdown lainnya di sini sesuai kebutuhan -->
                           </ul>
                           <ul class="submenu-angle" aria-expanded="false">
-                            <li><a class="nav-link" href="gantipassword.php" aria-expanded="false"><i
-                                    class="fa-solid fa-keyboard"></i> <span class="mini-click-non">Ganti
+                            <li><a class="nav-link" href="gantipassword.php" aria-expanded="false">
+                              <!-- <i class="fa-solid fa-keyboard"></i> -->
+                              <i class="fa-solid fa-pen-nib"></i>
+                              <span class="mini-click-non">Ganti
                                     Password</span></a>
                             </li>
                               <!-- <li><a title="Log Activity" href="log_activity.php"><span class="mini-sub-pro">log_activity</span></a></li> -->
@@ -154,12 +147,6 @@ $query = mysqli_query($connect, "SELECT * FROM users WHERE username='admin'");
                               <!-- Anda dapat menambahkan item dropdown lainnya di sini sesuai kebutuhan -->
                           </ul>
                       </li>
-                        <!-- <li>
-                            <li><a class="nav-link" href="gantipassword.php" aria-expanded="false"><i
-                                    class="fa-solid fa-keyboard"></i> <span class="mini-click-non">Ganti
-                                    Password</span></a>
-                            </li>
-                        </li> -->
                         <li>
                             <a class="nav-link" href="logout.php" aria-expanded="false"><i
                                     class="fa-solid fa-right-from-bracket"></i> <span
