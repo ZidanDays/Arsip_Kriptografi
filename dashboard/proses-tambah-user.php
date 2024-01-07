@@ -4,35 +4,36 @@ include('../config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil data dari formulir
-    $fullname = $_POST['fullname'];
-    $username = $_POST['username'];
-    $password = $_POST['password']; // Anda perlu mengenkripsi kata sandi
-    // $role = $_POST['role'];
+    $fullname = mysqli_real_escape_string($connect, $_POST['fullname']);
+    $username = mysqli_real_escape_string($connect, $_POST['username']);
+    $password = mysqli_real_escape_string($connect, $_POST['password']); 
 
-    // Contoh enkripsi kata sandi dengan hash bcrypt
-    // $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-    $hashedPassword = md5($password);
+    // Peningkatan keamanan: Gunakan prepared statement untuk mencegah serangan SQL injection
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    // Query SQL untuk menambahkan pengguna ke dalam database
-    $sql = "INSERT INTO users (username, password, fullname, job_title) VALUES ('$username', '$hashedPassword', '$fullname', 'user')";
+    // Peningkatan keamanan: Gunakan prepared statement untuk mencegah serangan SQL injection
+    $stmt = $connect->prepare("INSERT INTO users (username, password, fullname, job_title) VALUES (?, ?, ?, 'user')");
+    $stmt->bind_param("sss", $username, $hashedPassword, $fullname);
 
-    if (mysqli_query($connect, $sql)) {
+    if ($stmt->execute()) {
         // Jika berhasil, arahkan kembali ke halaman manajemen pengguna
-        // header("location: manajemen-user.php?alert=success");
-        // header("location: tambah-user.php");
         echo "<script language=\"JavaScript\">\n";
-		echo "alert('User Telah Ditambahkan!');\n";
-		echo "window.location='tambah-user.php'";
-		echo "</script>";
+        echo "alert('User Telah Ditambahkan!');\n";
+        echo "window.location='tambah-user.php'";
+        echo "</script>";
         exit();
     } else {
         // Jika terjadi kesalahan, tampilkan pesan kesalahan
-        echo "Error: " . mysqli_error($connect);
+        echo "Error: " . $stmt->error;
     }
+
+    // Tutup prepared statement
+    $stmt->close();
 } else {
     // Jika bukan metode POST, arahkan ke halaman lain atau tampilkan pesan kesalahan
     echo "Metode yang digunakan tidak diizinkan.";
 }
 
+// Tutup koneksi database
 mysqli_close($connect);
 ?>

@@ -6,6 +6,7 @@ include "AES.php"; //memasukan file AES
   if (isset($_POST['encrypt_now'])) {
       $user 		 = $_SESSION['username'];
       $id_user 		 = $_SESSION['id_user'];
+      $pwd_ori		   = mysqli_escape_string($connect,substr($_POST["pwdfile"], 0,16));
       $key		   = mysqli_escape_string($connect,substr(md5($_POST["pwdfile"]), 0,16));
       $kode  = $_POST['kode'];
         $nama  = $_POST['nama'];
@@ -55,7 +56,11 @@ include "AES.php"; //memasukan file AES
         exit();
     }
 
-    $sql1   = "INSERT INTO file VALUES ('', '$id_user', '$user', '$final_file', '$finalfile.rda', '', '$size2', '$key', '$kode', '$nama','$kategori', '$ruang', $rak, $box, $map, $urut, now(), '1', '$deskripsi')";
+    $sql1   = "INSERT INTO file VALUES (
+        '', '$id_user', '$user', '$final_file',
+        '$finalfile.rda', '', '$size2', '$key', '$pwd_ori',
+        '$kode', '$nama','$kategori', '$ruang',
+        $rak, $box, $map, $urut, now(), '1', '$deskripsi')";
     $query1  = mysqli_query($connect,$sql1) or die(mysqli_error($connect));
 
     $sql2   = "select * from file where file_url =''";
