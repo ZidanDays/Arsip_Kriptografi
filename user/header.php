@@ -95,8 +95,8 @@ $query = mysqli_query($connect, "SELECT * FROM users WHERE username='$user'");
                 <div class="profile-dtl">
                     <a href="#"><img src="img\logo.jpg" alt="" /></a>
                     <?php while ($data = mysqli_fetch_array($query)) { ?>
-                    <h2><?php echo $data['fullname']; ?><p class="designation icon" style="color:green;">
-                            <?php echo $data['job_title']; ?></p>
+                    <h2><strong><?php echo $data['fullname']; ?><p class="designation icon" style="color:green;">
+                            <?php echo $data['job_title']; ?></p></strong>
                     </h2><?php } ?>
                 </div>
                 <div class="profile-social-dtl">
