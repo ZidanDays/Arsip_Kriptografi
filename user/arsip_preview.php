@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-lg-8">
                             <div class="pdf-singe-pro">
-                                <a class="media" href="hasil_dekripsi/<?php echo $d['file_name_source']; ?>"></a>
+                                <a class="media" href="../dashboard/hasil_dekripsi/<?php echo $d['file_name_source']; ?>"></a>
                             </div>
 
 

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="logo-pro">
-                    <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                    <a href="index.html"><img class="main-logo" src="img/logo/favicon.png" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -24,26 +24,6 @@
                                         </button>
                                     </div>
                                 </div>
-                                <!-- Search -->
-                                <!-- <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-                                    <div class="header-top-menu tabl-d-n hd-search-rp">
-                                        <div class="breadcome-heading">
-                                            <form role="search" class="">
-                                                <input type="text" placeholder="Search..." class="form-control">
-                                                <a href=""><i class="fa fa-search"></i></a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                    <div class="header-right-info">
-                                        <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                                            <li class="nav-item">
-                                                <a href="logout.php"> Log Out</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -59,19 +39,6 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="breadcome-list">
-                                <!-- <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="breadcome-heading">
-                                    <h4 style="margin-bottom: 0px">Ganti Password</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <ul class="breadcome-menu" style="padding-top: 0px">
-                                    <li><a href="#">Home</a> <span class="bread-slash">/</span></li>
-                                    <li><span class="bread-blod">Ganti Password</span></li>
-                                </ul>
-                            </div>
-                        </div> -->
                             </div>
                         </div>
                     </div>
@@ -88,18 +55,29 @@
 
                             <div class="panel-body">
 
-                                <?php
+                            <?php
                                 if (isset($_GET['alert'])) {
                                     if ($_GET['alert'] == "sukses") {
                                         echo "<div class='alert alert-success'>Password anda berhasil diganti!</div>";
+                                    } else {
+                                        echo "<div class='alert alert-danger'>Ulangi Password! Konfirmasi Password Salah !!!</div>";
                                     }
                                 }
-                                ?>
+                            ?>
+
 
                                 <form action="gantipassword_act.php" method="post">
                                     <div class="form-group">
-                                        <label>Masukkan Password Baru</label>
-                                        <input type="password" class="form-control" placeholder="Masukkan Password Baru .." name="password" required="required" min="5">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" placeholder="Masukkan Password Lama .." name="passworda" required="required" min="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password Baru</label>
+                                        <input type="password" class="form-control" placeholder="Masukkan Password Baru .." name="passwordb" required="required" min="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ulangi Password</label>
+                                        <input type="password" class="form-control" placeholder="Ulangi Password Baru .." name="passwordc" required="required" min="5">
                                     </div>
                                     <div class="form-group-simpan">
                                         <input type="submit" class="btn btn-primary-simpan" value="Simpan">

@@ -15,7 +15,8 @@ $queryupdate = mysqli_query($connect,$sqlupdate);
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="logo-pro">
-                    <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                    <!-- fix bug wkwkwk -->
+                    <a href="index.html"><img class="main-logo" src="img/logo/favicon.png" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -256,7 +257,7 @@ $queryupdate = mysqli_query($connect,$sqlupdate);
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                             <h4 class="panel-title"><i class="ion-stats-bars fa-lg text-warning"></i> &nbsp;Statistik
-                                Jenis Surat</h4>
+                                Jenis Arsip</h4>
                         </div>
                         <div class="panel-body">
                             <div id="container-statistik-kategori" class="height-sm"></div>
@@ -419,6 +420,24 @@ $k6 = mysqli_query($connect,"SELECT kategori.kategori_id, file.rak, file.map, fi
 $k7 = mysqli_query($connect,"SELECT kategori.kategori_id, file.rak, file.map, file.box, file.urut FROM kategori INNER JOIN file ON kategori.kategori_id=file.file_kategori WHERE kategori_id = '8'");
 $k8 = mysqli_query($connect,"SELECT kategori.kategori_id, file.rak, file.map, file.box, file.urut FROM kategori INNER JOIN file ON kategori.kategori_id=file.file_kategori WHERE kategori_id = '10'");
 
+$nk1 = mysqli_query($connect,"SELECT kategori_nama FROM Kategori WHERE kategori_id = '1'");
+$nk2 = mysqli_query($connect,"SELECT kategori_nama FROM Kategori WHERE kategori_id = '3'");
+$nk3 = mysqli_query($connect,"SELECT kategori_nama FROM Kategori WHERE kategori_id = '4'");
+$nk4 = mysqli_query($connect,"SELECT kategori_nama FROM Kategori WHERE kategori_id = '5'");
+$nk5 = mysqli_query($connect,"SELECT kategori_nama FROM Kategori WHERE kategori_id = '6'");
+$nk6 = mysqli_query($connect,"SELECT kategori_nama FROM Kategori WHERE kategori_id = '7'");
+$nk7 = mysqli_query($connect,"SELECT kategori_nama FROM Kategori WHERE kategori_id = '8'");
+$nk8 = mysqli_query($connect,"SELECT kategori_nama FROM Kategori WHERE kategori_id = '10'");
+
+$data1 = mysqli_fetch_assoc($nk1);
+$data2 = mysqli_fetch_assoc($nk2);
+$data3 = mysqli_fetch_assoc($nk3);
+$data4 = mysqli_fetch_assoc($nk4);
+$data5 = mysqli_fetch_assoc($nk5);
+$data6 = mysqli_fetch_assoc($nk6);
+$data7 = mysqli_fetch_assoc($nk7);
+$data8 = mysqli_fetch_assoc($nk8);
+
 ?>
 
     <script src="../assets/js/highcharts.js" type="text/javascript"></script>
@@ -443,35 +462,35 @@ $k8 = mysqli_query($connect,"SELECT kategori.kategori_id, file.rak, file.map, fi
                 }
             },
             series: [{
-                    name: 'Tidak Berkategori',
+                    name: '<?php echo $data1["kategori_nama"]; ?>',
                     data: [<?php echo mysqli_num_rows($k1); ?>]
                 },
                 {
-                    name: 'Surat Keputusan',
+                    name: '<?php echo $data2["kategori_nama"]; ?>',
                     data: [<?php echo mysqli_num_rows($k2); ?>]
                 },
                 {
-                    name: 'Surat Izin Pelayanan',
+                    name: '<?php echo $data3["kategori_nama"]; ?>',
                     data: [<?php echo mysqli_num_rows($k3); ?>]
                 },
                 {
-                    name: 'Surat Perintah Kerja Proyek Jalan',
+                    name: '<?php echo $data4["kategori_nama"]; ?>',
                     data: [<?php echo mysqli_num_rows($k4); ?>]
                 },
                 {
-                    name: 'Surat Perintah Kerja Proyek Jembatan',
+                    name: '<?php echo $data5["kategori_nama"]; ?>',
                     data: [<?php echo mysqli_num_rows($k5); ?>]
                 },
                 {
-                    name: 'Surat Kesehatan Pegawai',
+                    name: '<?php echo $data6["kategori_nama"]; ?>',
                     data: [<?php echo mysqli_num_rows($k6); ?>]
                 },
                 {
-                    name: 'Surat Lampiran',
+                    name: '<?php echo $data7["kategori_nama"]; ?>',
                     data: [<?php echo mysqli_num_rows($k7); ?>]
                 },
                 {
-                    name: 'Curiculum Vitae',
+                    name: '<?php echo $data8["kategori_nama"]; ?>',
                     data: [<?php echo mysqli_num_rows($k8); ?>]
                 },
             ]

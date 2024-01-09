@@ -1,11 +1,9 @@
 <?php
 session_start();
 include('../config.php');
-
 if (empty($_SESSION['username'])) {
     header("location:../index.php");
 }
-
 $last = $_SESSION['username'];
 $sqlupdate = "UPDATE users SET last_activity=now() WHERE username='$last'";
 $queryupdate = mysqli_query($connect, $sqlupdate);
@@ -26,8 +24,7 @@ $query = mysqli_query($connect, "SELECT * FROM users WHERE username='$user'");
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="logo-pro">
-                    <!-- fix bug wkwkwk -->
-                    <a href="index.html"><img class="main-logo" src="img/logo/favicon.png" alt="" /></a>
+                    <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -90,28 +87,32 @@ $query = mysqli_query($connect, "SELECT * FROM users WHERE username='$user'");
                     <div class="card">
                         <div class="card-body">
     <h2>Tambah Pengguna Baru</h2>
-    <form method="POST" action="proses-tambah-user.php">
-        <div class="form-group">
-            <label for="fullname">Nama Asli:</label>
-            <input type="text" class="form-control" id="fullname" name="fullname" required>
-        </div>
-        <div class="form-group">
-            <label for="username">Nama Pengguna:</label>
-            <input type="text" class="form-control" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Kata Sandi:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <!-- <div class="form-group">
-            <label for="role">Peran:</label>
-            <select class="form-control" id="role" name="role">
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-            </select>
-        </div> -->
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </form>
+    <?php
+
+include('../config.php'); // Sertakan file konfigurasi database
+
+// Ambil informasi pengguna yang sedang login
+$username = $_SESSION['username']; // Anda harus menyesuaikan ini dengan variabel sesi yang digunakan dalam sistem Anda
+
+// Informasi aktivitas yang akan dicatat
+$activity = "Pengguna $username melakukan tindakan tertentu."; // Anda bisa menyesuaikan ini dengan aktivitas yang sesuai
+
+// Tanggal dan waktu saat ini
+$date = date("Y-m-d");
+$time = date("H:i:s");
+
+// Query SQL untuk menyimpan log aktivitas ke dalam tabel database
+$sql = "INSERT INTO log_activity (username, activity, date, time) VALUES ('$username', '$activity', '$date', '$time')";
+$result = mysqli_query($connect, $sql);
+
+// Periksa apakah log berhasil disimpan
+if ($result) {
+    echo "Log aktivitas berhasil disimpan.";
+} else {
+    echo "Terjadi kesalahan saat mencatat log aktivitas: " . mysqli_error($connect);
+}
+?>
+
 
                         </div>
                     </div>
@@ -119,7 +120,6 @@ $query = mysqli_query($connect, "SELECT * FROM users WHERE username='$user'");
 
         </section>
     </div>
-    <br><br><br><br>
     <?php include "footer.php";  ?>
     <!-- jquery
 		============================================ -->

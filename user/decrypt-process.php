@@ -27,7 +27,7 @@ if(mysqli_num_rows($sql)>0){
     $aes        = new AES($key);
     $fopen1     = fopen($file_path, "rb");
     $plain      = "";
-    $cache      = "hasil_dekripsi/$file_name";
+    $cache      = "../dashboard/hasil_dekripsi/$file_name";
     $fopen2     = fopen($cache, "wb");
 
     if($mod==0){
@@ -49,7 +49,7 @@ if(mysqli_num_rows($sql)>0){
 
    echo("<script language='javascript'>
        window.open('download.php', '_blank');
-       window.location.href='dekripsi.php';
+       window.location.href='arsip.php';
        window.alert('Berhasil mendekripsi file.');
        </script>
        ");

@@ -15,7 +15,8 @@ $queryupdate = mysqli_query($connect, $sqlupdate);
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="logo-pro">
-                    <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                    <!-- fix bug wkwkwk -->
+                    <a href="index.html"><img class="main-logo" src="img/logo/favicon.png" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -62,7 +63,9 @@ $queryupdate = mysqli_query($connect, $sqlupdate);
             </div>
         </div>
 
+
         <section class="breadcome-list">
+        <a href="enkripsi.php" class="btn btn-success mb-10">Upload & Enkripsi</a>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive" style="color:#fff;">
@@ -92,8 +95,18 @@ $queryupdate = mysqli_query($connect, $sqlupdate);
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $query = mysqli_query($connect, "SELECT * FROM file,kategori,ruang WHERE file_kategori=kategori_id and ruang_id=ruang_id  GROUP BY id_file DESC");
-                                // $query = mysqli_query($connect,"SELECT * FROM file,kategori,ruang WHERE file_kategori=kategori_id and ruang_id=ruang_id  ORDER BY id_file DESC");
+                                $query = mysqli_query($connect, "SELECT file.*,
+                                users.id_user, users.username, users.fullname, users.job_title, users.join_date,
+                                users.last_activity,
+                                kategori.*, ruang.kode_ruang
+                                FROM file
+                                JOIN users ON file.id_user = users.id_user
+                                JOIN kategori ON file.file_kategori = kategori.kategori_id
+                                JOIN ruang ON file.id_ruang = ruang.ruang_id WHERE users.username = '$last'
+                                GROUP BY file.id_file
+                                ORDER BY file.id_file DESC
+                                ;
+                                ");
                                 while ($data = mysqli_fetch_array($query)) { ?>
                                 <tr>
                                     <!-- <td><?php echo $data['id_file']; ?></td> -->
@@ -156,12 +169,22 @@ $queryupdate = mysqli_query($connect, $sqlupdate);
                                         <div class="btn-group">
                                             <?php if ($data['status'] == 2) { ?>
                                             <a target="_blank" class="btn btn-default"
-                                                href="hasil_dekripsi/<?php echo $data['file_name_source']; ?>"><i
+                                                href="../dashboard/hasil_dekripsi/<?php echo $data['file_name_source']; ?>"><i
                                                     class="fa fa-download"></i></a>
+
+                                            <!-- button lock -->
+                                            <a href="encrypt-file.php?id_file=<?php echo $data['id_file']; ?>"
+                                                class="btn btn-default">
+                                                Lock <i class="fa-solid fa-lock"></i></i></a>
+
                                             <?php } elseif ($data['status'] == 1) { ?>
                                             <a target="_blank" class="btn btn-default"
-                                                href="hasil_enkripsi/<?php echo $data['file_name_finish']; ?>"><i
+                                                href="../dashboard/hasil_enkripsi/<?php echo $data['file_name_finish']; ?>"><i
                                                     class="fa fa-download"></i></a>
+
+                                            <a href="decrypt-file.php?id_file=<?php echo $data['id_file']; ?>"
+                                                class="btn btn-default">
+                                                Unlock <i class="fa-solid fa-unlock"></i></i></a>
                                             <?php } ?>
                                             <!-- preview -->
                                             <!-- <a target="_blank"
@@ -174,6 +197,7 @@ $queryupdate = mysqli_query($connect, $sqlupdate);
                                                 data-target="#exampleModal_<?php echo $data['id_file']; ?>">
                                                 <i class="fa fa-trash"></i>
                                             </button>
+
 
                                         </div>
                                     </td>

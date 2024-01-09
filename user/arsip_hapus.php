@@ -15,10 +15,10 @@ $l = mysqli_fetch_assoc($lama);
 // }
 
 $nama_file_lama = $l['file_name_source'];
-unlink("../hasil_dekripsi/".$nama_file_lama);
+unlink("../dashboard/hasil_dekripsi/".$nama_file_lama);
 
 $nama_file_lama_enkripsi = $l['file_name_finish'];
-unlink("../hasil_enkripsi/".$nama_file_lama_enkripsi);
+unlink("../dashboard/hasil_enkripsi/".$nama_file_lama_enkripsi);
 
 mysqli_query($connect, "delete from file where id_file='$id'");
 header("location:arsip.php");

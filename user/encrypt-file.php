@@ -32,13 +32,13 @@ $queryupdate = mysqli_query($connect,$sqlupdate);
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="header-top-wraper">
+                    <div class="header-top-wraper">
                             <div class="row">
                                 <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
                                     <div class="menu-switcher-pro">
                                         <button type="button" id="sidebarCollapse"
                                             class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
-                                            <i class="icon nalika-menu-task"></i>
+                                            <!-- <i class="icon nalika-menu-task"></i> -->
                                         </button>
                                     </div>
                                 </div>
@@ -58,9 +58,9 @@ $queryupdate = mysqli_query($connect,$sqlupdate);
                             $query = mysqli_query($connect,"SELECT * FROM file WHERE id_file='$id_file'");
                             $data2 = mysqli_fetch_array($query);
                             ?>
-                            <h3 align="center" style="color:#fff;">Dekripsi File <i
+                            <h3 align="center" style="color:#fff;">Enkripsi File <i
                                     style="color:red"><?php echo $data2['file_name_finish'] ?></i></h3><br>
-                            <form class="form-horizontal" method="post" action="decrypt-process.php">
+                            <form class="form-horizontal" method="post" action="encrypt-process-dua.php">
                                 <div class="table-responsive">
                                     <table class="table striped" style="color:#fff;">
                                         <tr>
@@ -89,26 +89,25 @@ $queryupdate = mysqli_query($connect,$sqlupdate);
                                             <td><?php echo $data2['keterangan']; ?></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>PASSWORD</strong></td>
-                                            <td>:</td>
-                                            <td><strong><?php echo $data2['pwd_ori']; ?></strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Masukkan Password Untuk Mendekrip</td>
+                                            <td></td>
                                             <td></td>
                                             <td>
                                                 <div class="col-md-6">
                                                     <input type="hidden" name="fileid"
                                                         value="<?php echo $data2['id_file'];?>">
+                                                    <!-- <input class="form-control" id="inputPassword" type="password"
+                                                        placeholder="Password" name="pwdfilea" required><br>
                                                     <input class="form-control" id="inputPassword" type="password"
-                                                        placeholder="Password" name="pwdfile" required><br>
-                                                    <input type="submit" name="decrypt_now" value="Dekripsi File"
-                                                        class="form-control btn btn-primary">
+                                                        placeholder="Ulangi Password" name="pwdfileb" required><br> -->
+
                                                 </div>
                                             </td>
                                         </tr>
+                                        
                                     </table>
                                 </div>
+                                <input type="submit" name="encrypt_now" value="Encrypt"
+                                                        class="form-control btn btn-primary">
                             </form>
                         </div>
                     </div>

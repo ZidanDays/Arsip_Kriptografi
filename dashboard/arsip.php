@@ -95,7 +95,7 @@ $queryupdate = mysqli_query($connect, $sqlupdate);
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $query = mysqli_query($connect, "SELECT * FROM file,kategori,ruang WHERE file_kategori=kategori_id and ruang_id=ruang_id  GROUP BY id_file DESC");
+                                $query = mysqli_query($connect, "SELECT * FROM file,kategori,ruang WHERE file_kategori=kategori_id and id_ruang=ruang_id  GROUP BY id_file DESC");
                                 // $query = mysqli_query($connect,"SELECT * FROM file,kategori,ruang WHERE file_kategori=kategori_id and ruang_id=ruang_id  ORDER BY id_file DESC");
                                 while ($data = mysqli_fetch_array($query)) { ?>
                                 <tr>
